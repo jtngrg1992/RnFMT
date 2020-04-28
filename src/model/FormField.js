@@ -33,7 +33,7 @@ class FormField {
       //make the regex match
       const result = this.validationRegex.test(value);
       if (result === false) {
-        return `${name} needs to be valid`;
+        return `${this.name} needs to be valid`;
       }
     }
     return null;

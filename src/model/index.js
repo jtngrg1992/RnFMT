@@ -1,4 +1,4 @@
 import FormField from './FormField';
-import FieldType from './FormField';
+import FormFieldType from './FormFieldType';
 
-export {FormField, FieldType};
+export {FormField, FormFieldType};
