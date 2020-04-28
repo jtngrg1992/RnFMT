@@ -8,7 +8,11 @@ import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {RegisterComponent, LoginComponent} from './src/screens';
+import {
+  RegisterComponent,
+  LoginComponent,
+  DashboardComponent,
+} from './src/screens';
 
 const Stack = createStackNavigator();
 
@@ -22,9 +26,11 @@ const App = () => (
         headerTitleStyle: {
           color: 'white',
         },
+        headerTintColor: 'white',
       }}>
       <Stack.Screen name="Login" component={LoginComponent} />
       <Stack.Screen name="Register" component={RegisterComponent} />
+      <Stack.Screen name="Dashboard" component={DashboardComponent} />
     </Stack.Navigator>
   </NavigationContainer>
 );

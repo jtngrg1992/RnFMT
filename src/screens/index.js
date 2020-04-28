@@ -1,3 +1,4 @@
 import RegisterComponent from './RegisterComponent';
 import LoginComponent from './LoginComponent';
-export {RegisterComponent, LoginComponent};
+import DashboardComponent from './DashboardComponent';
+export {RegisterComponent, LoginComponent, DashboardComponent};

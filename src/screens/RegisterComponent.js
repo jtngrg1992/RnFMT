@@ -5,10 +5,13 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {FormComponent} from '../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {RegistrationFields} from '../static';
+import {UserModel} from '../model';
+import DBManager from '../services/DBManager';
 class RegisterComponent extends PureComponent {
   constructor(props) {
     super(props);
@@ -19,6 +22,39 @@ class RegisterComponent extends PureComponent {
       isSubmissionAllowed: false,
     };
   }
+
+  _onSignup = async () => {
+    //map form fields to user object
+    let userObject = {};
+    this.formFields.forEach(item => {
+      userObject[item.name] = item.value;
+    });
+
+    //convert to model object
+    const modelObject = new UserModel(
+      null,
+      userObject.fullName,
+      userObject.email,
+      userObject.gpa,
+      userObject.height,
+      userObject.parentName,
+      userObject.password,
+      userObject.phone,
+      userObject.testScore,
+    );
+
+    console.log(modelObject);
+
+    let dbManager = new DBManager();
+    try {
+      await dbManager.createUser(modelObject);
+      Alert.alert('Success!', 'Account created, try logging in!');
+      this.props.navigation.goBack();
+    } catch (error) {
+      Alert.alert('Oops!', error.message);
+    }
+  };
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -40,6 +76,7 @@ class RegisterComponent extends PureComponent {
             }
           />
           <TouchableOpacity
+            onPress={() => this._onSignup()}
             style={{
               ...styles.submitButton,
               opacity: this.state.isSubmissionAllowed === true ? 1 : 0.5,
