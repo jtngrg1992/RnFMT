@@ -24,6 +24,18 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {FormInput, FormComponent} from './src/components';
+import {FormField} from './src/model';
+import FieldType from './src/model/FieldType';
+
+const field = new FormField({
+  name: 'test',
+  type: FieldType.WHOLE_NUMBER,
+  label: 'enter test',
+  placeholder: 'test placeholder',
+  // value: 10,
+  isRequired: true,
+});
 const App: () => React$Node = () => {
   return (
     <>
@@ -40,11 +52,8 @@ const App: () => React$Node = () => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
+              <FormComponent fields={[field]} />
+              <FormInput label="something" defaultValue={'2'} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
