@@ -51,9 +51,9 @@ class FormComponent extends Component {
       }
     }
 
-    if (shouldAllowSubmission == true) {
-      console.log('enable button!');
-    }
+    shouldAllowSubmission === true
+      ? this.props.onEnableFormSubmission()
+      : this.props.onDisableFormSubmission();
   }
 
   _onChangeText = ({text, field}) => {

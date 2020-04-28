@@ -6,15 +6,14 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {FormComponent} from '../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {RegistrationFields} from '../static';
-class RegisterComponent extends PureComponent {
+import {LoginFields} from '../static';
+import {FormComponent} from '../components';
+
+class LoginComponent extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.formFields = RegistrationFields;
-
+    this.formFields = LoginFields;
     this.state = {
       isSubmissionAllowed: false,
     };
@@ -52,7 +51,7 @@ class RegisterComponent extends PureComponent {
     );
   }
 }
-export default RegisterComponent;
+export default LoginComponent;
 
 const styles = StyleSheet.create({
   container: {
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 15,
-    paddingVertical: 20,
+    paddingVertical: 15,
     marginHorizontal: 40,
     backgroundColor: 'tomato',
     borderRadius: 10,

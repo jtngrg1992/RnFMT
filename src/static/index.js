@@ -1,2 +1,4 @@
 import RegistrationFields from './RegisterationFields';
-export {RegistrationFields};
+import LoginFields from './LoginFields';
+
+export {RegistrationFields, LoginFields};
